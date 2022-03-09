@@ -498,36 +498,36 @@ class MyChatBot {
 
   BotState _stateH() {
     return BotState(
-        id: "H",
-        messages: () => [
-              RichText(
-                text: const TextSpan(children: [
-                  TextSpan(
-                      text:
-                          "Prontinho, finalizamos as perguntas, agora é cmoig!"),
-                ]),
-              ),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    const TextSpan(
-                        text:
-                            "Com base nas suas respostas o smartphone que mais se adequa ao seu uso é "),
-                    TextSpan(
-                      text: smartPhoneModel,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+      id: "H",
+      messages: () => [
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(
+                text: "Prontinho, finalizamos as perguntas, agora é comigo!"),
+          ]),
+        ),
+        RichText(
+          text: TextSpan(
+            children: [
+              const TextSpan(
+                  text:
+                      "Com base nas suas respostas o smartphone que mais se adequa ao seu uso é "),
+              TextSpan(
+                text: smartPhoneModel,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
-        transitions: [
-          BotTransition(id: "H=>I", to: "I"),
-        ],
-        onEnter: (machine) async {
-          await Future.delayed(const Duration(seconds: 1));
-          machine.transitionTo("I");
-        });
+          ),
+        ),
+      ],
+      transitions: [
+        BotTransition(id: "H=>I", to: "I"),
+      ],
+      onEnter: (machine) async {
+        await Future.delayed(const Duration(seconds: 1));
+        machine.transitionTo("I");
+      },
+    );
   }
 
   BotState _stateI() {
@@ -535,9 +535,11 @@ class MyChatBot {
       id: "I",
       messages: () => [
         RichText(
-          text: const TextSpan(children: [
-            TextSpan(text: "Adorei convensar com você!"),
-          ]),
+          text: const TextSpan(
+            children: [
+              TextSpan(text: "Adorei convensar com você!"),
+            ],
+          ),
         ),
         RichText(
           text: const TextSpan(children: [
@@ -549,13 +551,15 @@ class MyChatBot {
       ],
       transitions: [
         BotTransition(
-            id: "I=>J",
-            to: "J",
-            message: RichText(text: const TextSpan(text: "Sim"))),
+          id: "I=>J",
+          to: "J",
+          message: RichText(text: const TextSpan(text: "Sim")),
+        ),
         BotTransition(
-            id: "I=>K",
-            to: "K",
-            message: RichText(text: const TextSpan(text: "Não"))),
+          id: "I=>K",
+          to: "K",
+          message: RichText(text: const TextSpan(text: "Não")),
+        ),
       ],
     );
   }

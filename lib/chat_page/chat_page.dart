@@ -14,13 +14,9 @@ class ChatPage extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ChatBotWidget(
         chatBot: chatBot,
-        botTransitionWidget: (message) => _botTransitionWidget(message),
+        botTransitionWidget: (message) => BotMessageWidget(message: message),
         sameUserSpacing: 3,
       ),
     );
-  }
-
-  Widget _botTransitionWidget(RichText message) {
-    return Container();
   }
 }
