@@ -4,6 +4,7 @@ import 'package:flutter_chat_composer/flutter_chat_composer.dart';
 class MyChatBot {
   static const String botName = "Juliette";
   static String userName = "";
+  static String smartPhoneModel = "IPhone 13";
 
   ChatBot chatBot() {
     return ChatBot(
@@ -15,6 +16,13 @@ class MyChatBot {
         _stateB(),
         _stateC(),
         _stateD(),
+        _stateE(),
+        _stateF(),
+        _stateG(),
+        _stateH(),
+        _stateI(),
+        _stateJ(),
+        _stateK(),
       ],
     );
   }
@@ -90,8 +98,8 @@ class MyChatBot {
     );
   }
 
-  BotState _stateB() {
-    return BotState(
+  BotStateMultipleChoice _stateB() {
+    return BotStateMultipleChoice(
       id: "B",
       messages: () => [
         RichText(
@@ -99,7 +107,7 @@ class MyChatBot {
             children: [
               TextSpan(
                   text:
-                      "Legal $userName! Agora que sei um pouco sobre você podemos começar. Vamos la? "),
+                      "Legal $userName! Agora que sei um pouco sobre você podemos começar. Vamos la?"),
             ],
           ),
         ),
@@ -114,41 +122,40 @@ class MyChatBot {
           ]),
         ),
       ],
-      transitions: [
-        BotTransition(
-          id: "B=>C1",
-          to: "C",
+      options: [
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Jogos"),
           ),
         ),
-        BotTransition(
-          id: "B=>C2",
-          to: "C",
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Redes Sociais"),
           ),
         ),
-        BotTransition(
-          id: "B=>C3",
-          to: "C",
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Edição"),
           ),
         ),
-        BotTransition(
-          id: "B=>C4",
-          to: "C",
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Produtividade"),
           ),
         ),
       ],
+      transitions: [
+        BotTransition(
+          id: "B=>C",
+          to: "C",
+        ),
+      ],
+      decideTransition: (selection) => "C",
     );
   }
 
-  BotState _stateC() {
-    return BotState(
+  BotStateMultipleChoice _stateC() {
+    return BotStateMultipleChoice(
       id: "C",
       messages: () => [
         RichText(
@@ -162,130 +169,428 @@ class MyChatBot {
           ]),
         ),
       ],
-      transitions: [
-        BotTransition(
-          id: "C=>D1",
-          to: "D",
+      options: [
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Jogos"),
           ),
         ),
-        BotTransition(
-          id: "C=>D2",
-          to: "D",
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Redes Sociais"),
           ),
         ),
-        BotTransition(
-          id: "C=>D3",
-          to: "D",
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Edição"),
           ),
         ),
-        BotTransition(
-          id: "C=>D4",
-          to: "D",
+        BotOption(
           message: RichText(
             text: const TextSpan(text: "Produtividade"),
           ),
         ),
       ],
+      transitions: [
+        BotTransition(
+          id: "C=>D",
+          to: "D",
+        ),
+      ],
+      decideTransition: (selection) => "D",
     );
   }
 
-  BotState _stateD() {
-    return BotState(
-      id: "D",
+  BotStateMultipleChoice _stateD() {
+    return BotStateMultipleChoice(
+        id: "D",
+        messages: () => [
+              RichText(
+                text: const TextSpan(children: [
+                  TextSpan(
+                      text:
+                          "Legal, agora quero saber um pouco mais sobre seu uso no geral. "),
+                  TextSpan(
+                      text:
+                          "Em relação aos apps abaixo, quais você mais utiliza?"),
+                ]),
+              ),
+            ],
+        options: [
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Minecraft"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Free Fire"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Call of Duty"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Fortinite"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Geshin Impact"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "League of Legends Wild Rift"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Asphalt 9"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Candy Crush"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "PES 2021"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Minecraft"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Outros jogos"),
+            ),
+          ),
+          BotOption(
+            message: RichText(
+              text: const TextSpan(text: "Nenhuma das opções acima"),
+            ),
+          ),
+        ],
+        transitions: [
+          BotTransition(
+            id: "D=>E",
+            to: "E",
+          ),
+        ],
+        decideTransition: (selection) => "E");
+  }
+
+  BotStateMultipleChoice _stateE() {
+    return BotStateMultipleChoice(
+      id: "E",
       messages: () => [
         RichText(
           text: const TextSpan(children: [
             TextSpan(
                 text:
-                    "Legal, agora quero saber um pouco mais sobre seu uso no geral. "),
+                    "Agora, sobre redes sociais, quais dos apps abaixo você faz uso mais frequente? "),
+          ]),
+        ),
+      ],
+      options: [
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Instagram"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Facebook"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Whatsapp"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Tik Tok"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Youtube"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Snapchat"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Twitter"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Outras Redes Sociais"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Nenhuma das opções acima"),
+          ),
+        ),
+      ],
+      transitions: [
+        BotTransition(
+          id: "E=>F",
+          to: "F",
+        ),
+      ],
+      decideTransition: (selection) => "F",
+    );
+  }
+
+  BotStateMultipleChoice _stateF() {
+    return BotStateMultipleChoice(
+      id: "F",
+      messages: () => [
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(text: "Entendi, interessante"),
+          ]),
+        ),
+        RichText(
+          text: const TextSpan(children: [
             TextSpan(
-                text: "Em relação aos apps abaixo, quais você mais utiliza?"),
+                text:
+                    "Para fazer edição pelo smartphone, você faz uso de quais dos apps abaixo?"),
+          ]),
+        ),
+      ],
+      options: [
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Tik Tok"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Photoshop"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Canva"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Vimeo"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Inshot"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Capcut"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Outros app de edição"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Nenhuma das opções acima"),
+          ),
+        ),
+      ],
+      transitions: [
+        BotTransition(
+          id: "F=>G",
+          to: "G",
+        ),
+      ],
+      decideTransition: (selection) => "G",
+    );
+  }
+
+  BotStateMultipleChoice _stateG() {
+    return BotStateMultipleChoice(
+      id: "G",
+      messages: () => [
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(
+                text:
+                    "Lega, agora só mais uma pergunta antes deu te sugerir um modelo."),
+          ]),
+        ),
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(
+                text:
+                    "Em relação a produtividade, quais dos apps abaixo você utiliza mais?"),
+          ]),
+        ),
+      ],
+      options: [
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Adobe Scam"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "CamScanner"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "PowerPoint"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Vimeo"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Google Docs"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Google Maps"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Outros app de produtividade"),
+          ),
+        ),
+        BotOption(
+          message: RichText(
+            text: const TextSpan(text: "Nenhuma das opções acima"),
+          ),
+        ),
+      ],
+      transitions: [
+        BotTransition(
+          id: "G=>H",
+          to: "H",
+        ),
+      ],
+      decideTransition: (selection) => "H",
+    );
+  }
+
+  BotState _stateH() {
+    return BotState(
+        id: "H",
+        messages: () => [
+              RichText(
+                text: const TextSpan(children: [
+                  TextSpan(
+                      text:
+                          "Prontinho, finalizamos as perguntas, agora é cmoig!"),
+                ]),
+              ),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    const TextSpan(
+                        text:
+                            "Com base nas suas respostas o smartphone que mais se adequa ao seu uso é "),
+                    TextSpan(
+                      text: smartPhoneModel,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+        transitions: [
+          BotTransition(id: "H=>I", to: "I"),
+        ],
+        onEnter: (machine) async {
+          await Future.delayed(const Duration(seconds: 1));
+          machine.transitionTo("I");
+        });
+  }
+
+  BotState _stateI() {
+    return BotState(
+      id: "I",
+      messages: () => [
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(text: "Adorei convensar com você!"),
+          ]),
+        ),
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(
+                text:
+                    "Mas me conta, eu consegui te ajudar com o que precisava?"),
           ]),
         ),
       ],
       transitions: [
         BotTransition(
-          id: "D=>E1",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Minecraft"),
-          ),
-        ),
+            id: "I=>J",
+            to: "J",
+            message: RichText(text: const TextSpan(text: "Sim"))),
         BotTransition(
-          id: "D=>E2",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Free Fire"),
-          ),
+            id: "I=>K",
+            to: "K",
+            message: RichText(text: const TextSpan(text: "Não"))),
+      ],
+    );
+  }
+
+  BotState _stateJ() {
+    return BotState(
+      id: "J",
+      messages: () => [
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(text: "Que bom!"),
+          ]),
         ),
-        BotTransition(
-          id: "D=>E3",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Call of Duty"),
-          ),
+        RichText(
+          text: TextSpan(children: [
+            TextSpan(text: "Obrigado, e tenha um ótimo dia $userName!"),
+          ]),
         ),
-        BotTransition(
-          id: "D=>E4",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Fortinite"),
-          ),
+      ],
+    );
+  }
+
+  BotState _stateK() {
+    return BotState(
+      id: "K",
+      messages: () => [
+        RichText(
+          text: const TextSpan(children: [
+            TextSpan(text: "Ahh que pena..."),
+          ]),
         ),
-        BotTransition(
-          id: "D=>E5",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Geshin Impact"),
-          ),
-        ),
-        BotTransition(
-          id: "D=>E6",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "League of Legends Wild Rift"),
-          ),
-        ),
-        BotTransition(
-          id: "D=>E7",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Asphalt 9"),
-          ),
-        ),
-        BotTransition(
-          id: "D=>E8",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Candy Crush"),
-          ),
-        ),
-        BotTransition(
-          id: "D=>E9",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "PES 2021"),
-          ),
-        ),
-        BotTransition(
-          id: "D=>E10",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Outros jogos"),
-          ),
-        ),
-        BotTransition(
-          id: "D=>E11",
-          to: "E",
-          message: RichText(
-            text: const TextSpan(text: "Nenhuma das opções acima"),
-          ),
+        RichText(
+          text: TextSpan(children: [
+            TextSpan(text: "Obrigado, e tenha um ótimo dia $userName!"),
+          ]),
         ),
       ],
     );
