@@ -12,7 +12,8 @@ class ChatPage extends StatelessWidget {
     ChatBot chatBot = MyChatBot().chatBot();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ChatBot"),
+        title: const Text("Juliette"),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
