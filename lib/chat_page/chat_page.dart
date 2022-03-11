@@ -10,12 +10,16 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChatBot chatBot = MyChatBot().chatBot();
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ChatBotWidget(
-        chatBot: chatBot,
-        botTransitionWidget: (message) => BotMessageWidget(message: message),
-        sameUserSpacing: 3,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("ChatBot"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ChatBotWidget(
+          chatBot: chatBot,
+          sameUserSpacing: 3,
+        ),
       ),
     );
   }
