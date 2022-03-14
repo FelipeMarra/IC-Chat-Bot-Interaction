@@ -123,7 +123,7 @@ class MyChatBot {
           ]),
         ),
       ],
-      options: [
+      options: () => [
         BotOption(
           message: const Text.rich(
             TextSpan(text: "Jogos"),
@@ -170,7 +170,7 @@ class MyChatBot {
           ]),
         ),
       ],
-      options: [
+      options: () => [
         BotOption(
           message: const Text.rich(
             TextSpan(text: "Jogos"),
@@ -217,7 +217,7 @@ class MyChatBot {
                 ]),
               ),
             ],
-        options: [
+        options: () => [
           BotOption(
             message: const Text.rich(
               TextSpan(text: "Minecraft"),
@@ -300,7 +300,7 @@ class MyChatBot {
           ]),
         ),
       ],
-      options: [
+      options: () => [
         BotOption(
           message: const Text.rich(
             TextSpan(text: "Instagram"),
@@ -374,7 +374,7 @@ class MyChatBot {
           ]),
         ),
       ],
-      options: [
+      options: () => [
         BotOption(
           message: const Text.rich(
             TextSpan(text: "Tik Tok"),
@@ -445,7 +445,7 @@ class MyChatBot {
           ]),
         ),
       ],
-      options: [
+      options: () => [
         BotOption(
           message: const Text.rich(
             TextSpan(text: "Adobe Scam"),
