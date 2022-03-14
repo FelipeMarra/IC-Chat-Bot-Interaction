@@ -15,12 +15,9 @@ class ChatPage extends StatelessWidget {
         title: const Text("Juliette"),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ChatBotWidget(
-          chatBot: chatBot,
-          sameUserSpacing: 3,
-        ),
+      body: ChatBotWidget(
+        chatBot: chatBot,
+        sameUserSpacing: 3,
       ),
     );
   }

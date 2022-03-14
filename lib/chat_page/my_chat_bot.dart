@@ -621,9 +621,9 @@ class MyChatBot {
     return BotStateSingleChoice(
       id: "K",
       messages: () => [
-        const Text.rich(
+        Text.rich(
           TextSpan(children: [
-            TextSpan(text: "Ahh que pena..."),
+            TextSpan(text: "Ahh que pena $userName..."),
           ]),
         ),
         const Text.rich(
