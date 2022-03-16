@@ -218,67 +218,67 @@ class MyChatBot {
               ),
             ],
         options: () => [
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Minecraft"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Free Fire"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Call of Duty"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Fortinite"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Geshin Impact"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "League of Legends Wild Rift"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Asphalt 9"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Candy Crush"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "PES 2021"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Minecraft"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Outros jogos"),
-            ),
-          ),
-          BotOption(
-            message: const Text.rich(
-              TextSpan(text: "Nenhuma das opções acima"),
-            ),
-          ),
-        ],
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Minecraft"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Free Fire"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Call of Duty"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Fortinite"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Geshin Impact"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "League of Legends Wild Rift"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Asphalt 9"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Candy Crush"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "PES 2021"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Minecraft"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Outros jogos"),
+                ),
+              ),
+              BotOption(
+                message: const Text.rich(
+                  TextSpan(text: "Nenhuma das opções acima"),
+                ),
+              ),
+            ],
         transitions: [
           BotTransition(
             id: "D=>E",
@@ -584,18 +584,25 @@ class MyChatBot {
           ]),
         ),
       ],
+      options: [
+        BotOption(
+          message: const Text("Sim"),
+        ),
+        BotOption(
+          message: const Text("Não"),
+        ),
+      ],
       transitions: [
         BotTransition(
           id: "I=>J",
           to: "J",
-          message: const Text.rich(TextSpan(text: "Sim")),
         ),
         BotTransition(
           id: "I=>K",
           to: "K",
-          message: const Text.rich(TextSpan(text: "Não")),
         ),
       ],
+      decideTransition: (option) => option.message?.data == "Sim" ? "J" : "K",
     );
   }
 
@@ -608,9 +615,9 @@ class MyChatBot {
             TextSpan(text: "Que bom $userName!"),
           ]),
         ),
-        Text.rich(
+        const Text.rich(
           TextSpan(children: [
-            TextSpan(text: "Obrigado, e tenha um ótimo dia $userName!"),
+            TextSpan(text: "Obrigado, e tenha um ótimo dia!"),
           ]),
         ),
       ],
