@@ -29,12 +29,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   url_strategy: ^0.2.0
+
   flutter_chat_composer:
     git:
       url: https://github.com/FelipeMarra/flutter_chat_composer
       ref: main
 
+  flutter_markdown: ^0.6.9
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
