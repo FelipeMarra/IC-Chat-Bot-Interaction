@@ -39,12 +39,12 @@ class MyChatBot {
     }
   }
 
-  BotStateOpenText _stateA() {
+  _stateA() {
     return BotStateOpenText(
       id: "A",
       messages: () => [
         const MarkdownBody(
-          data: "Oi, tudo bem? Eu sou a $botName e estou aqui para te ajudar!",
+          data: "Oi, tudo bem? Eu sou a $botName, e estou aqui para te ajudar!",
         ),
         const MarkdownBody(
           data:
@@ -60,7 +60,7 @@ class MyChatBot {
     );
   }
 
-  BotStateOpenText _stateALoop() {
+  _stateALoop() {
     return BotStateOpenText(
       id: "ALoop",
       messages: () => [
@@ -265,11 +265,11 @@ class MyChatBot {
       ],
       transitions: [
         BotTransition(
-          id: "E=>F",
-          to: "F",
+          id: "F=>G",
+          to: "G",
         ),
       ],
-      decideTransition: (selection) => "F",
+      decideTransition: (selection) => "G",
     );
   }
 
@@ -414,7 +414,7 @@ class MyChatBot {
       label: () => [
         MarkdownBody(data: "** $smartPhoneModel **"),
       ],
-      transition: BotTransition(id: "HImage=>I", to: "I"),
+      transition: BotTransition(id: "HImage=>I", to: "J"),
       onEnter: (machine) async {
         await Future.delayed(const Duration(seconds: 1));
         machine.transitionTo("J");
