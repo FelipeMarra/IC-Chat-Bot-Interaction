@@ -39,7 +39,7 @@ class MyChatBot {
     }
   }
 
-  _stateA() {
+  BotStateOpenText _stateA() {
     return BotStateOpenText(
       id: "A",
       messages: () => [
@@ -60,7 +60,7 @@ class MyChatBot {
     );
   }
 
-  _stateALoop() {
+  BotStateOpenText _stateALoop() {
     return BotStateOpenText(
       id: "ALoop",
       messages: () => [
