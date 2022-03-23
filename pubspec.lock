@@ -74,7 +74,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "622fbfd16b50e8528027cc15e04c275e100c013d"
+      resolved-ref: "5ac6b98f4ad7865f4a95b60c83da30f141146bde"
       url: "https://github.com/FelipeMarra/flutter_chat_composer"
     source: git
     version: "0.0.1"
