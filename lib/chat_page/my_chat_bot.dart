@@ -412,7 +412,7 @@ class MyChatBot {
         },
       ),
       label: () => [
-        MarkdownBody(data: "** $smartPhoneModel **"),
+        MarkdownBody(data: "**$smartPhoneModel**"),
       ],
       transition: BotTransition(id: "HImage=>I", to: "J"),
       onEnter: (machine) async {
