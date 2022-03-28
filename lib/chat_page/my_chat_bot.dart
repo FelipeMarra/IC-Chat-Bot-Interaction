@@ -6,10 +6,11 @@ class MyChatBot {
   static const String botName = "Juliette";
   static String userName = "";
   static String smartPhoneModel = "IPhone 13";
+  String id = DateTime.now().millisecondsSinceEpoch.toString();
 
   ChatBot chatBot() {
     return ChatBot(
-      id: "chat_bot",
+      id: id,
       initialStateId: "A",
       states: [
         _stateA(),
@@ -431,7 +432,7 @@ class MyChatBot {
           data: "Mas me conta, eu consegui te ajudar com o que precisava?",
         ),
       ],
-      options: [
+      options: () => [
         BotOption(
           message: const MarkdownBody(data: "Sim"),
         ),

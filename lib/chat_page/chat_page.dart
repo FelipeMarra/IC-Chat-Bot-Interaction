@@ -1,23 +1,71 @@
+import 'package:chat_bot_interaction/chat_page/chatPage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_composer/flutter_chat_composer.dart';
-import 'my_chat_bot.dart';
+import 'package:provider/provider.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatPage extends StatefulWidget {
+  static const routeName = '/chat_page';
+  const ChatPage({
+    Key? key,
+  }) : super(key: key);
 
-  static const routeName = '/chat';
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  bool firstBuilt = true;
+  late ChatBotWidget chatBotWidget;
 
   @override
   Widget build(BuildContext context) {
-    ChatBot chatBot = MyChatBot().chatBot();
+    final ChatPageController controller = context.watch<ChatPageController>();
+
+    if (firstBuilt) {
+      chatBotWidget = ChatBotWidget(
+        chatBot: controller.getChatBot(),
+        sameUserSpacing: 3,
+      );
+
+      if (chatBotWidget.chatBot.historyMode == false) {
+        controller.whatchChatEnded(chatBotWidget.chatBot);
+      }
+
+      firstBuilt = false;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Juliette"),
         centerTitle: true,
       ),
-      body: ChatBotWidget(
-        chatBot: chatBot,
-        sameUserSpacing: 3,
+      body: Column(
+        children: [
+          Flexible(
+            flex: 14,
+            fit: FlexFit.loose,
+            child: chatBotWidget,
+          ),
+          //Show finalized button when the chat ends
+          controller.chatEnded
+              ? Flexible(
+                  flex: 1,
+                  fit: FlexFit.tight,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          child: const Text("Finalizar"),
+                          onPressed: () {
+                            Navigator.of(context).popAndPushNamed("/");
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : Container(),
+        ],
       ),
     );
   }
