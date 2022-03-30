@@ -95,7 +95,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "5d3d3e8db6472874fa3689a8f95acff0dd10f1b4"
+      resolved-ref: "9fb5a4ed16c04491897382e4c218f93350be12f7"
       url: "https://github.com/FelipeMarra/flutter_chat_composer"
     source: git
     version: "0.0.1"
@@ -137,20 +137,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.4"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.0"
   js:
     dependency: transitive
     description:

@@ -1,4 +1,4 @@
-import 'package:chat_bot_interaction/chat_page/chatPage_controller.dart';
+import 'package:chat_bot_interaction/chat_page/chat_page_controller.dart';
 import 'package:chat_bot_interaction/chat_page/chat_page.dart';
 import 'package:chat_bot_interaction/home_page/home_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';

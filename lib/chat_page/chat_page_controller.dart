@@ -30,6 +30,8 @@ class ChatPageController extends ChangeNotifier {
       //if it is the last state
       if (state.id == "K" || state.id == "L") {
         //save chat
+        //TODO se n tiver o future ele n salva o ultimo estado
+        await Future.delayed(Duration(seconds: 2));
         Map<String, dynamic> chatHistory = await chatBot.getMessageHistoryMap();
         Box chatHistoryBox = await Hive.openBox("chat_history");
         await chatHistoryBox.put(chatBot.id, chatHistory);

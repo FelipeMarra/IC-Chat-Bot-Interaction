@@ -1,4 +1,4 @@
-import 'package:chat_bot_interaction/chat_page/chatPage_controller.dart';
+import 'package:chat_bot_interaction/chat_page/chat_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_composer/flutter_chat_composer.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +47,7 @@ class _ChatPageState extends State<ChatPage> {
             child: chatBotWidget,
           ),
           //Show finalized button when the chat ends
-          controller.chatEnded
+          controller.chatEnded || chatBotWidget.chatBot.historyMode
               ? Flexible(
                   flex: 1,
                   fit: FlexFit.tight,
