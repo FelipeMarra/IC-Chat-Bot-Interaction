@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       body: initiated && chatHistoryBox.length > 0
           ? ListView.builder(
               shrinkWrap: true,
+              reverse: true,
               padding: const EdgeInsets.all(8.0),
               itemCount: chatHistoryBox.length,
               itemBuilder: (contex, index) {
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
                             Flexible(
                                 child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Text(
                                   "Chat id: $id",
