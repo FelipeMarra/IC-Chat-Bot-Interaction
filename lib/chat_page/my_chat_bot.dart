@@ -7,6 +7,7 @@ class MyChatBot {
   static String userName = "";
   static String smartPhoneModel = "IPhone 13";
   String id = DateTime.now().millisecondsSinceEpoch.toString();
+  List<String> jumpIds = [];
 
   ChatBot chatBot() {
     return ChatBot(
@@ -162,68 +163,139 @@ class MyChatBot {
           id: "D=>E",
           to: "E",
         ),
+        BotTransition(
+          id: "D=>F",
+          to: "F",
+        ),
+        BotTransition(
+          id: "D=>G",
+          to: "G",
+        ),
+        BotTransition(
+          id: "D=>H",
+          to: "H",
+        ),
+        BotTransition(
+          id: "D=>I",
+          to: "I",
+        ),
       ],
-      decideTransition: (selection) => "E",
+      decideTransition: (selection) {
+        for (BotOption option in selection) {
+          switch (option.message.data) {
+            case "Jogos":
+              jumpIds.add("E");
+              break;
+            case "Redes Sociais":
+              jumpIds.add("F");
+              break;
+            case "Edição":
+              jumpIds.add("G");
+              break;
+            case "Produtividade":
+              jumpIds.add("H");
+              break;
+            default:
+          }
+        }
+        if (!jumpIds.contains("E")) {
+          return "E";
+        }
+        if (!jumpIds.contains("F")) {
+          return "F";
+        }
+        if (!jumpIds.contains("G")) {
+          return "G";
+        }
+        if (!jumpIds.contains("H")) {
+          return "H";
+        }
+        return "I";
+      },
     );
   }
 
   BotStateMultipleChoice _stateE() {
     return BotStateMultipleChoice(
-        id: "E",
-        messages: () => [
-              const MarkdownBody(
-                data:
-                    "Entendi, agora preciso saber um pouco mais sobre o seu uso no geral. Em relação aos apps abaixo, quais você mais utiliza?",
-              ),
-              const MarkdownBody(
-                data:
-                    "Em relação à categoria de jogos, se você faz uso de algum desses apps, qual(is) você mais acessa?",
-              ),
-            ],
-        options: () => [
-              BotOption(
-                message: const MarkdownBody(data: "Minecraft"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Free Fire"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Fortnite"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Call of Duty"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Geshin Impact"),
-              ),
-              BotOption(
-                message: const MarkdownBody(
-                  data: "League of Legends Wild Rift",
-                ),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Asphalt 9"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Candy Crush"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "PES 2021"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Outros jogos"),
-              ),
-              BotOption(
-                message: const MarkdownBody(data: "Nenhuma das opções acima"),
-              ),
-            ],
-        transitions: [
-          BotTransition(
-            id: "E=>F",
-            to: "F",
+      id: "E",
+      messages: () => [
+        const MarkdownBody(
+          data:
+              "Entendi, agora preciso saber um pouco mais sobre o seu uso no geral. Em relação aos apps abaixo, quais você mais utiliza?",
+        ),
+        const MarkdownBody(
+          data:
+              "Em relação à categoria de jogos, se você faz uso de algum desses apps, qual(is) você mais acessa?",
+        ),
+      ],
+      options: () => [
+        BotOption(
+          message: const MarkdownBody(data: "Minecraft"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Free Fire"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Fortnite"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Call of Duty"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Geshin Impact"),
+        ),
+        BotOption(
+          message: const MarkdownBody(
+            data: "League of Legends Wild Rift",
           ),
-        ],
-        decideTransition: (selection) => "F");
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Asphalt 9"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Candy Crush"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "PES 2021"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Outros jogos"),
+        ),
+        BotOption(
+          message: const MarkdownBody(data: "Nenhuma das opções acima"),
+        ),
+      ],
+      transitions: [
+        BotTransition(
+          id: "E=>F",
+          to: "F",
+        ),
+        BotTransition(
+          id: "E=>G",
+          to: "G",
+        ),
+        BotTransition(
+          id: "E=>H",
+          to: "H",
+        ),
+        BotTransition(
+          id: "E=>I",
+          to: "I",
+        ),
+      ],
+      decideTransition: (selection) {
+        if (!jumpIds.contains("F")) {
+          return "F";
+        }
+        if (!jumpIds.contains("G")) {
+          return "G";
+        }
+        if (!jumpIds.contains("H")) {
+          return "H";
+        }
+        return "I";
+      },
+    );
   }
 
   BotStateMultipleChoice _stateF() {
@@ -269,8 +341,24 @@ class MyChatBot {
           id: "F=>G",
           to: "G",
         ),
+        BotTransition(
+          id: "F=>H",
+          to: "H",
+        ),
+        BotTransition(
+          id: "F=>I",
+          to: "I",
+        ),
       ],
-      decideTransition: (selection) => "G",
+      decideTransition: (selection) {
+        if (!jumpIds.contains("G")) {
+          return "G";
+        }
+        if (!jumpIds.contains("H")) {
+          return "H";
+        }
+        return "I";
+      },
     );
   }
 
@@ -314,8 +402,17 @@ class MyChatBot {
           id: "G=>H",
           to: "H",
         ),
+        BotTransition(
+          id: "G=>I",
+          to: "I",
+        ),
       ],
-      decideTransition: (selection) => "H",
+      decideTransition: (selection) {
+        if (!jumpIds.contains("H")) {
+          return "H";
+        }
+        return "I";
+      },
     );
   }
 

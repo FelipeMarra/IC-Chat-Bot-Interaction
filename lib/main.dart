@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 void main() async {
   setPathUrlStrategy();
   await Hive.initFlutter();
-  //TODO
-  await Hive.deleteBoxFromDisk("chat_history");
   runApp(const ChatBotInteractionApp());
 }
 

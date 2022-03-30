@@ -49,27 +49,43 @@ class _HomePageState extends State<HomePage> {
                 DateTime date = DateTime.fromMillisecondsSinceEpoch(
                   int.parse(id),
                 );
-                return InkWell(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Flexible(
-                            child: Column(
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
                           children: [
-                            Text("Chat id: $id"),
-                            Text(
-                              "Criado em ${date.day}/${date.month} às ${date.hour}:${date.minute}",
-                            ),
+                            Flexible(
+                                child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Chat id: $id",
+                                  textAlign: TextAlign.start,
+                                ),
+                                Text(
+                                  "Nome do Usuário: ${_getUserName(index)}",
+                                  textAlign: TextAlign.start,
+                                ),
+                                Text(
+                                  "Criado em ${_formatDateNum(date.day)}/${_formatDateNum(date.month)} às ${_formatDateNum(date.hour)}:${_formatDateNum(date.minute)}",
+                                  textAlign: TextAlign.start,
+                                ),
+                              ],
+                            ))
                           ],
-                        ))
-                      ],
+                        ),
+                      ),
+                      onTap: () async {
+                        await chatPageController.start(id);
+                        Navigator.of(context)
+                            .popAndPushNamed(ChatPage.routeName);
+                      },
                     ),
-                  ),
-                  onTap: () async {
-                    await chatPageController.start(id);
-                    Navigator.of(context).popAndPushNamed(ChatPage.routeName);
-                  },
+                    const Divider(),
+                  ],
                 );
               },
             )
@@ -85,5 +101,27 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  String _getUserName(int index) {
+    Map<String, dynamic> chatHistory = chatHistoryBox.getAt(index);
+    Map<String, dynamic>? last;
+
+    chatHistory.forEach((key, value) {
+      if (key != "id") {
+        if (value["id"] == "A" || value["id"] == "ALoop") {
+          last = value;
+        }
+        if (value["id"] == "B") {
+          return;
+        }
+      }
+    });
+
+    return last!["userMessages"][0] ?? "";
+  }
+
+  String _formatDateNum(int number) {
+    return number < 10 ? "0$number" : number.toString();
   }
 }
