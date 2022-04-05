@@ -4,7 +4,7 @@ import 'package:flutter_chat_composer/flutter_chat_composer.dart';
 import 'package:provider/provider.dart';
 
 class ChatPage extends StatefulWidget {
-  static const routeName = '/chat_page';
+  static const routeName = '/chat';
   const ChatPage({
     Key? key,
   }) : super(key: key);

@@ -4,16 +4,18 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../chat_page/chat_page_controller.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class AdminPage extends StatefulWidget {
+  const AdminPage({
     Key? key,
   }) : super(key: key);
 
+  static const routeName = "/admin";
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AdminPage> createState() => _AdminPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AdminPageState extends State<AdminPage> {
   late Box chatHistoryBox;
   bool initiated = false;
 
@@ -92,16 +94,6 @@ class _HomePageState extends State<HomePage> {
               },
             )
           : Container(),
-      floatingActionButton: Tooltip(
-        message: "Criar novo chat",
-        child: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () async {
-            await chatPageController.start("");
-            Navigator.popAndPushNamed(context, ChatPage.routeName);
-          },
-        ),
-      ),
     );
   }
 
