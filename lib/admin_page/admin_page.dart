@@ -1,6 +1,5 @@
 import 'package:chat_bot_interaction/chat_page/chat_page.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import '../chat_page/chat_page_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +15,8 @@ class AdminPage extends StatefulWidget {
 }
 
 class _AdminPageState extends State<AdminPage> {
-  late Box chatHistoryBox;
+  late ChatPageController chatPageController;
+  late List<Map<String, dynamic>> chats;
   bool initiated = false;
 
   @override
@@ -26,7 +26,8 @@ class _AdminPageState extends State<AdminPage> {
   }
 
   _init() async {
-    chatHistoryBox = await Hive.openBox("chat_history");
+    chatPageController = context.read<ChatPageController>();
+    chats = await chatPageController.getAllChats();
     setState(() {
       initiated = true;
     });
@@ -34,21 +35,19 @@ class _AdminPageState extends State<AdminPage> {
 
   @override
   Widget build(BuildContext context) {
-    final ChatPageController chatPageController =
-        context.watch<ChatPageController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Your Chats"),
         centerTitle: true,
       ),
-      body: initiated && chatHistoryBox.length > 0
+      body: initiated
           ? ListView.builder(
               shrinkWrap: true,
               reverse: true,
               padding: const EdgeInsets.all(8.0),
-              itemCount: chatHistoryBox.length,
+              itemCount: chats.length,
               itemBuilder: (contex, index) {
-                String id = chatHistoryBox.getAt(index)["id"];
+                String id = chats[index]["id"];
                 DateTime date = DateTime.fromMillisecondsSinceEpoch(
                   int.parse(id),
                 );
@@ -84,8 +83,7 @@ class _AdminPageState extends State<AdminPage> {
                       ),
                       onTap: () async {
                         await chatPageController.start(id);
-                        Navigator.of(context)
-                            .popAndPushNamed(ChatPage.routeName);
+                        Navigator.of(context).pushNamed(ChatPage.routeName);
                       },
                     ),
                     const Divider(),
@@ -93,12 +91,12 @@ class _AdminPageState extends State<AdminPage> {
                 );
               },
             )
-          : Container(),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 
   String _getUserName(int index) {
-    Map<String, dynamic> chatHistory = chatHistoryBox.getAt(index);
+    Map<String, dynamic> chatHistory = chats[index];
     Map<String, dynamic>? last;
 
     chatHistory.forEach((key, value) {

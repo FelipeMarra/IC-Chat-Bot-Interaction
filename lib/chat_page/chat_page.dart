@@ -56,8 +56,12 @@ class _ChatPageState extends State<ChatPage> {
                       Expanded(
                         child: TextButton(
                           child: const Text("Finalizar"),
-                          onPressed: () {
-                            Navigator.of(context).popAndPushNamed("/");
+                          onPressed: () async {
+                            if (chatBotWidget.chatBot.historyMode) {
+                              Navigator.of(context).pop();
+                            } else {
+                              print("IR PARA O FORM");
+                            }
                           },
                         ),
                       ),

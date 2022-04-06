@@ -110,8 +110,8 @@ Endereço: Praça Dom Helvécio, 74, Bairro Dom Bosco, São João del-Rei, Minas
           ),
         ),
         const Text("Contato com os pesquisadores responsáveis:"),
-        RichText(
-          text: const TextSpan(
+        const Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text: """
@@ -134,8 +134,8 @@ Telefone: +55 31 99982-1688
             ],
           ),
         ),
-        RichText(
-          text: const TextSpan(
+        const Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text: """Dr. Marcelo de Rezende Pinto
@@ -156,8 +156,8 @@ Telefone: +5531 99967-0518
             ],
           ),
         ),
-        RichText(
-          text: const TextSpan(
+        const Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text: """Dr. Dárlinton Barbosa Feres Carvalho
@@ -178,8 +178,8 @@ Telefone: +55 32 99199-2566
             ],
           ),
         ),
-        RichText(
-          text: const TextSpan(
+        const Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text: """Mariane Auxiliadora Fonseca
@@ -200,8 +200,8 @@ Telefone: +55 32 99832-7729
             ],
           ),
         ),
-        RichText(
-          text: const TextSpan(
+        const Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text: """Felipe Ferreira Marra

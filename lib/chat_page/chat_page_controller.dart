@@ -1,9 +1,10 @@
 import 'package:chat_bot_interaction/chat_page/my_chat_bot.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_chat_composer/flutter_chat_composer.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class ChatPageController extends ChangeNotifier {
+  final fireRef = FirebaseDatabase.instance.ref();
   late ChatBot Function() getChatBot;
   String id = "";
 
@@ -17,8 +18,9 @@ class ChatPageController extends ChangeNotifier {
     if (id.isEmpty) {
       getChatBot = () => MyChatBot().chatBot();
     } else {
-      Box chatHistoryBox = await Hive.openBox("chat_history");
-      getChatBot = () => ChatBot.fromMessageHistoryMap(chatHistoryBox.get(id));
+      DataSnapshot snapshot = await fireRef.child(id).get();
+      getChatBot = () =>
+          ChatBot.fromMessageHistoryMap(snapshot.value as Map<String, dynamic>);
     }
   }
 
@@ -31,14 +33,30 @@ class ChatPageController extends ChangeNotifier {
       if (state.id == "K" || state.id == "L") {
         //save chat
         //TODO se n tiver o future ele n salva o ultimo estado
-        await Future.delayed(Duration(seconds: 2));
-        Map<String, dynamic> chatHistory = await chatBot.getMessageHistoryMap();
-        Box chatHistoryBox = await Hive.openBox("chat_history");
-        await chatHistoryBox.put(chatBot.id, chatHistory);
+        await Future.delayed(const Duration(seconds: 2));
+        if (chatBot.historyMode == false) {
+          await _storeChat(chatBot);
+        }
         //notify that the chat ended
         _chatEnded = true;
         notifyListeners();
       }
     });
+  }
+
+  _storeChat(chatBot) async {
+    final Map chatHistoryMap = await chatBot.getMessageHistoryMap();
+    await fireRef.child(chatHistoryMap["id"]).set(chatHistoryMap);
+  }
+
+  Future<List<Map<String, dynamic>>> getAllChats() async {
+    DatabaseEvent historyEvent = await fireRef.once();
+    Map historyMap = historyEvent.snapshot.value as Map;
+    List<Map<String, dynamic>> historyList = [];
+    historyMap.forEach((key, value) {
+      historyList.add(value);
+    });
+
+    return historyList;
   }
 }

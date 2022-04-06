@@ -32,11 +32,11 @@ class MyChatBot {
     );
   }
 
-  String _stateADecision(TextEditingController textController) {
-    if (textController.text.isEmpty) {
+  String _stateADecision(String textController) {
+    if (textController.isEmpty) {
       return "ALoop";
     } else {
-      userName = textController.text;
+      userName = textController;
       return "B";
     }
   }
@@ -75,10 +75,10 @@ class MyChatBot {
         BotTransition(id: "ALoop=>B", to: "B"),
       ],
       decideTransition: (textController) {
-        if (textController.text.isEmpty) {
+        if (textController.isEmpty) {
           return "ALoop";
         } else {
-          userName = textController.text;
+          userName = textController;
           return "B";
         }
       },
