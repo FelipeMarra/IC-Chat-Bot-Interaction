@@ -109,7 +109,7 @@ class MyChatBot {
               "Legal $userName! Agora que sei um pouco sobre você podemos começar. Vamos lá?",
         ),
         const MarkdownBody(
-          data: "Quais das categorias de apps a seguir você faz **maior** uso?",
+          data: "Qual(is) das categorias de apps a seguir você faz **maior** uso?",
         ),
       ],
       options: () => [
@@ -141,7 +141,7 @@ class MyChatBot {
       id: "D",
       messages: () => [
         const MarkdownBody(
-          data: "Quais das categorias de apps a seguir você faz **menor** uso?",
+          data: "Qual(is) das categorias de apps a seguir você faz **menor** uso?",
         ),
       ],
       options: () => [
@@ -221,7 +221,7 @@ class MyChatBot {
       messages: () => [
         const MarkdownBody(
           data:
-              "Entendi, agora preciso saber um pouco mais sobre o seu uso no geral. Em relação aos apps abaixo, quais você mais utiliza?",
+              "Entendi, agora preciso saber um pouco mais sobre o seu uso no geral. Em relação aos apps abaixo, qual(is) você mais utiliza?",
         ),
         const MarkdownBody(
           data:
@@ -304,7 +304,7 @@ class MyChatBot {
       messages: () => [
         const MarkdownBody(
           data:
-              "Agora, sobre redes sociais, quais dos apps abaixo você faz uso mais frequente?",
+              "Agora, sobre redes sociais, qual(is) dos apps abaixo você faz uso mais frequente?",
         ),
       ],
       options: () => [
@@ -368,7 +368,7 @@ class MyChatBot {
       messages: () => [
         const MarkdownBody(
           data:
-              "Para fazer edição pelo smartphone, você faz uso de quais dos apps abaixo?",
+              "Para fazer edição pelo smartphone, você faz uso de qual(is) dos apps abaixo?",
         ),
       ],
       options: () => [
@@ -426,7 +426,7 @@ class MyChatBot {
         ),
         const MarkdownBody(
           data:
-              "Em relação a produtividade, quais dos apps abaixo você utiliza mais?",
+              "Em relação a produtividade, qual(is) dos apps abaixo você utiliza mais?",
         ),
       ],
       options: () => [
