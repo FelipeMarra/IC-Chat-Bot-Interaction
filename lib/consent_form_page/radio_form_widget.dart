@@ -33,6 +33,8 @@ class _RadioFormWidgetState extends State<RadioFormWidget> {
               });
             },
           ),
+          visualDensity: VisualDensity.compact,
+          dense: true,
         ),
         ListTile(
           title: const Text('Discordo'),
@@ -46,6 +48,8 @@ class _RadioFormWidgetState extends State<RadioFormWidget> {
               });
             },
           ),
+          visualDensity: VisualDensity.compact,
+          dense: true,
         ),
       ],
     );

@@ -230,12 +230,18 @@ Telefone: +55  37 99947-6397
     return Form(
         key: _formKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(
+              height: 8.0,
+            ),
+            const Text("E-mai *"),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 8.0, 200.0, 8.0),
+              padding: const EdgeInsets.only(right: 200.0),
               child: TextFormField(
                 decoration: const InputDecoration(
-                  label: Text("Insira seu email"),
+                  label: Text("Seu e-mail"),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -245,6 +251,11 @@ Telefone: +55  37 99947-6397
                 },
               ),
             ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            const Text(
+                "Abaixo assinale se compreendeu os objetivos e condições de sua participação na pesquisa e concorda em participar. *"),
             RadioFormWidget(
               onChange: (didAgree) {
                 agreed = didAgree;
