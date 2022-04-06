@@ -2,6 +2,7 @@ import 'package:chat_bot_interaction/chat_page/chat_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_composer/flutter_chat_composer.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChatPage extends StatefulWidget {
   static const routeName = '/chat';
@@ -60,7 +61,7 @@ class _ChatPageState extends State<ChatPage> {
                             if (chatBotWidget.chatBot.historyMode) {
                               Navigator.of(context).pop();
                             } else {
-                              print("IR PARA O FORM");
+                              launch("https://forms.gle/SrCMSX8ZYRZjXv6Y9");
                             }
                           },
                         ),
