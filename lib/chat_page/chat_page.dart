@@ -15,6 +15,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  static const String botFace = "assets/images/bot_face.png";
   bool firstBuilt = true;
   late ChatBotWidget chatBotWidget;
 
@@ -26,6 +27,10 @@ class _ChatPageState extends State<ChatPage> {
       chatBotWidget = ChatBotWidget(
         chatBot: controller.getChatBot(),
         sameUserSpacing: 3,
+        botFace: Image.network(
+          botFace,
+          filterQuality: FilterQuality.high,
+        ),
       );
 
       if (chatBotWidget.chatBot.historyMode == false) {
@@ -37,7 +42,20 @@ class _ChatPageState extends State<ChatPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Juliette"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 40,
+              child: Image.network(
+                botFace,
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+            const SizedBox(width: 10),
+            const Text("Juliette"),
+          ],
+        ),
         centerTitle: true,
       ),
       body: Column(

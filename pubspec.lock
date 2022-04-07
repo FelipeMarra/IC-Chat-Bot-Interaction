@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  email_validator:
+    dependency: "direct main"
+    description:
+      name: email_validator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -116,7 +123,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: c35972998edd91bb999ab75fc90404d055fb3cf8
+      resolved-ref: "1927ee7db9160edd1cf6df1efdb2922fcd233eca"
       url: "https://github.com/FelipeMarra/flutter_chat_composer"
     source: git
     version: "0.0.1"

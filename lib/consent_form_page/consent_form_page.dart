@@ -1,6 +1,7 @@
 import 'package:chat_bot_interaction/chat_page/chat_page.dart';
 import 'package:chat_bot_interaction/chat_page/chat_page_controller.dart';
 import 'package:chat_bot_interaction/consent_form_page/radio_form_widget.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,18 +53,18 @@ class _ConsentFormPageState extends State<ConsentFormPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Text(
+      children: const [
+        Text(
           "Propensão à Interação com Humanos Digitais",
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        const Text(
+        Text(
           """
 
 Termo de Consentimento Livre e Esclarecido""",
         ),
-        const Text("""
+        Text("""
 
 Prezado(a) participante,
         
@@ -87,8 +88,8 @@ Por favor, sinta-se à vontade para fazer qualquer pergunta sobre este estudo. S
         
 Em caso de dúvida quanto à condução ética do estudo, entre em contato com o Comitê de Ética em Pesquisa da CEPSJ. O Comitê de Ética é a instância que tem por objetivo defender os interesses dos participantes da pesquisa em sua integridade e dignidade e para contribuir no desenvolvimento da pesquisa dentro de padrões éticos. Dessa forma, o comitê tem o papel de avaliar e monitorar o andamento do projeto de modo que a pesquisa respeite os princípios éticos de proteção aos direitos humanos, da dignidade, da autonomia, da não maleficência, da confidencialidade e da privacidade.
         """),
-        RichText(
-          text: const TextSpan(
+        Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text:
@@ -109,8 +110,8 @@ Endereço: Praça Dom Helvécio, 74, Bairro Dom Bosco, São João del-Rei, Minas
             ],
           ),
         ),
-        const Text("Contato com os pesquisadores responsáveis:"),
-        const Text.rich(
+        Text("Contato com os pesquisadores responsáveis:"),
+        Text.rich(
           TextSpan(
             children: [
               TextSpan(
@@ -134,7 +135,7 @@ Telefone: +55 31 99982-1688
             ],
           ),
         ),
-        const Text.rich(
+        Text.rich(
           TextSpan(
             children: [
               TextSpan(
@@ -156,7 +157,7 @@ Telefone: +5531 99967-0518
             ],
           ),
         ),
-        const Text.rich(
+        Text.rich(
           TextSpan(
             children: [
               TextSpan(
@@ -178,7 +179,7 @@ Telefone: +55 32 99199-2566
             ],
           ),
         ),
-        const Text.rich(
+        Text.rich(
           TextSpan(
             children: [
               TextSpan(
@@ -200,7 +201,7 @@ Telefone: +55 32 99832-7729
             ],
           ),
         ),
-        const Text.rich(
+        Text.rich(
           TextSpan(
             children: [
               TextSpan(
@@ -246,6 +247,9 @@ Telefone: +55  37 99947-6397
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Campo Obrigatório";
+                  }
+                  if (!EmailValidator.validate(value)) {
+                    return "Insira um e-mail válido";
                   }
                   return null;
                 },
