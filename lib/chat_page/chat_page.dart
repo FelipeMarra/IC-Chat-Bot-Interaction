@@ -27,7 +27,7 @@ class _ChatPageState extends State<ChatPage> {
       chatBotWidget = ChatBotWidget(
         chatBot: controller.getChatBot(),
         sameUserSpacing: 3,
-        botFace: Image.network(
+        botFace: Image.asset(
           botFace,
           filterQuality: FilterQuality.high,
         ),
