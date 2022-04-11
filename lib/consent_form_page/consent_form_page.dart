@@ -34,7 +34,18 @@ class _ConsentFormPageState extends State<ConsentFormPage> {
               _consentimentForm(),
               Center(
                   child: TextButton(
-                child: const Text("Continuar"),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Expanded(
+                      child: Text(
+                        "Continuar",
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
+                ),
                 onPressed: () async {
                   if (_formKey.currentState?.validate() == true && agreed) {
                     await chatPageController.start("");
