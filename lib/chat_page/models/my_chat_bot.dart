@@ -1,3 +1,4 @@
+import 'package:chat_bot_interaction/chat_page/models/pts_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_composer/flutter_chat_composer.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -5,9 +6,9 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 class MyChatBot {
   static const String botName = "Juliette";
   static String userName = "";
-  static String smartPhoneModel = "IPhone 13";
   String id = DateTime.now().millisecondsSinceEpoch.toString();
   List<String> jumpIds = [];
+  PtsModel ptsModel = PtsModel();
 
   ChatBot chatBot() {
     return ChatBot(
@@ -15,7 +16,6 @@ class MyChatBot {
       initialStateId: "A",
       states: [
         _stateA(),
-        _stateALoop(),
         _stateB(),
         _stateC(),
         _stateD(),
@@ -58,30 +58,14 @@ class MyChatBot {
         BotTransition(id: "A=>ALoop", to: "ALoop"),
         BotTransition(id: "A=>B", to: "B"),
       ],
-      decideTransition: _stateADecision,
-    );
-  }
-
-  BotStateOpenText _stateALoop() {
-    return BotStateOpenText(
-      id: "ALoop",
-      messages: () => [
-        const MarkdownBody(
-          data: "Eu realmente preciso saber seu nome...",
-        ),
-      ],
-      transitions: [
-        BotTransition(id: "ALoop=>ALoop", to: "ALoop"),
-        BotTransition(id: "ALoop=>B", to: "B"),
-      ],
-      decideTransition: (textController) {
-        if (textController.isEmpty) {
-          return "ALoop";
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Responda seu nome por favor";
         } else {
-          userName = textController;
-          return "B";
+          return null;
         }
       },
+      decideTransition: (contoller) => "B",
     );
   }
 
@@ -96,6 +80,13 @@ class MyChatBot {
       transitions: [
         BotTransition(id: "B=>C", to: "C"),
       ],
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Responda seu hobby por favor";
+        } else {
+          return null;
+        }
+      },
       decideTransition: (controller) => "C",
     );
   }
@@ -109,7 +100,8 @@ class MyChatBot {
               "Legal $userName! Agora que sei um pouco sobre você podemos começar. Vamos lá?",
         ),
         const MarkdownBody(
-          data: "Qual(is) das categorias de apps a seguir você faz **maior** uso?",
+          data:
+              "Qual(is) das categorias de apps a seguir você faz **maior** uso?",
         ),
       ],
       options: () => [
@@ -132,7 +124,20 @@ class MyChatBot {
           to: "D",
         ),
       ],
-      decideTransition: (selection) => "D",
+      decideTransition: (selection) {
+        for (var element in selection) {
+          if (element.message.data == "Jogos") {
+            ptsModel.sumGames(1);
+          } else if (element.message.data == "Redes Sociais") {
+            ptsModel.sumSocialNetwork(1);
+          } else if (element.message.data == "Edição") {
+            ptsModel.sumEditing(1);
+          } else if (element.message.data == "Produtividade") {
+            ptsModel.sumProductivity(1);
+          }
+        }
+        return "D";
+      },
     );
   }
 
@@ -141,7 +146,8 @@ class MyChatBot {
       id: "D",
       messages: () => [
         const MarkdownBody(
-          data: "Qual(is) das categorias de apps a seguir você faz **menor** uso?",
+          data:
+              "Qual(is) das categorias de apps a seguir você faz **menor** uso?",
         ),
       ],
       options: () => [
@@ -185,14 +191,18 @@ class MyChatBot {
           switch (option.message.data) {
             case "Jogos":
               jumpIds.add("E");
+              ptsModel.sumGames(-1);
               break;
             case "Redes Sociais":
+              ptsModel.sumSocialNetwork(-1);
               jumpIds.add("F");
               break;
             case "Edição":
+              ptsModel.sumEditing(-1);
               jumpIds.add("G");
               break;
             case "Produtividade":
+              ptsModel.sumProductivity(-1);
               jumpIds.add("H");
               break;
             default:
@@ -261,9 +271,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outros jogos"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -284,6 +291,8 @@ class MyChatBot {
         ),
       ],
       decideTransition: (selection) {
+        ptsModel.sumGames(selection.length);
+
         if (!jumpIds.contains("F")) {
           return "F";
         }
@@ -332,9 +341,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outras Redes Sociais"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -351,6 +357,8 @@ class MyChatBot {
         ),
       ],
       decideTransition: (selection) {
+        ptsModel.sumSocialNetwork(selection.length);
+
         if (!jumpIds.contains("G")) {
           return "G";
         }
@@ -393,9 +401,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outros app de edição"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -408,6 +413,8 @@ class MyChatBot {
         ),
       ],
       decideTransition: (selection) {
+        ptsModel.sumEditing(selection.length);
+
         if (!jumpIds.contains("H")) {
           return "H";
         }
@@ -451,9 +458,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outros app de produtividade"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -461,7 +465,11 @@ class MyChatBot {
           to: "I",
         ),
       ],
-      decideTransition: (selection) => "I",
+      decideTransition: (selection) {
+        ptsModel.sumProductivity(selection.length);
+
+        return "I";
+      },
     );
   }
 
@@ -472,9 +480,9 @@ class MyChatBot {
         const MarkdownBody(
           data: "Prontinho, finalizamos as perguntas, agora é comigo!",
         ),
-        const MarkdownBody(
+        MarkdownBody(
           data:
-              "Com base nas suas respostas o smartphone que mais se adequa ao seu uso é",
+              "Com base nas suas respostas você faz muito uso de apps de ${ptsModel.result.category}, portanto o smartphone que mais se adequa ao seu uso é ",
         ),
       ],
       transitions: [
@@ -491,7 +499,7 @@ class MyChatBot {
     return BotStateImage(
       id: "IImage",
       image: () => Image.network(
-        "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=940&hei=1112&fmt=png-alpha&.v=1645552346275",
+        ptsModel.result.image,
         fit: BoxFit.fill,
         loadingBuilder: (
           BuildContext context,
@@ -510,7 +518,7 @@ class MyChatBot {
         },
       ),
       label: () => [
-        MarkdownBody(data: "**$smartPhoneModel**"),
+        MarkdownBody(data: "**${ptsModel.result.smartphone}**"),
       ],
       transition: BotTransition(id: "HImage=>I", to: "J"),
       onEnter: (machine) async {

@@ -1,4 +1,4 @@
-import 'package:chat_bot_interaction/chat_page/my_chat_bot.dart';
+import 'package:chat_bot_interaction/chat_page/models/my_chat_bot.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_chat_composer/flutter_chat_composer.dart';
