@@ -69,14 +69,9 @@ class _ConsentFormPageState extends State<ConsentFormPage> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: const [
         Text(
-          "Propensão à Interação com Humanos Digitais",
+          "Termo de Consentimento Livre e Esclarecido",
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        Text(
-          """
-
-Termo de Consentimento Livre e Esclarecido""",
         ),
         Text("""
 

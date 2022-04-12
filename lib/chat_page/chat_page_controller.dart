@@ -23,9 +23,9 @@ class ChatPageController extends ChangeNotifier {
       getChatBot = () => MyChatBot().chatBot();
     } else {
       DataSnapshot snapshot = await fireRef.child(id).get();
-      Map<String, Map<String, dynamic>> snapValue =
-          snapshot.value as Map<String, Map<String, dynamic>>;
-      getChatBot = () => ChatBot.fromMessageHistoryMap(snapValue["chat"]!);
+      Map<String, dynamic> snapValue = snapshot.value as Map<String, dynamic>;
+      getChatBot = () => ChatBot.fromMessageHistoryMap(
+          snapValue["chat"]! as Map<String, dynamic>);
     }
   }
 
