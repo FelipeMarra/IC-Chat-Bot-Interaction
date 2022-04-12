@@ -123,7 +123,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "87bcd4254fc5efeddb84641941918f9e5f215320"
+      resolved-ref: cb29c9d1dcc70bb6b2e10f3ac85907232bd2ee49
       url: "https://github.com/FelipeMarra/flutter_chat_composer"
     source: git
     version: "0.0.1"
@@ -250,11 +250,9 @@ packages:
   state_composer:
     dependency: transitive
     description:
-      path: "."
-      ref: main
-      resolved-ref: fecb15c36ccd5b303ce131bef8fe2e2be38a571c
-      url: "https://github.com/FelipeMarra/state-composer"
-    source: git
+      name: state_composer
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.0"
   stream_channel:
     dependency: transitive
