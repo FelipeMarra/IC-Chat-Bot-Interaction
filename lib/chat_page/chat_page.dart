@@ -47,7 +47,7 @@ class _ChatPageState extends State<ChatPage> {
           children: [
             SizedBox(
               height: 40,
-              child: Image.network(
+              child: Image.asset(
                 botFace,
                 filterQuality: FilterQuality.high,
               ),

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ic-v1-e1e60"
+  },
+  "targets": {
+    "ic-v1-e1e60": {
+      "hosting": {
+        "chatbotresearchufsj": [
+          "ic-v1-e1e60"
+        ]
+      }
+    }
   }
 }
