@@ -32,15 +32,6 @@ class MyChatBot {
     );
   }
 
-  String _stateADecision(String textController) {
-    if (textController.isEmpty) {
-      return "ALoop";
-    } else {
-      userName = textController;
-      return "B";
-    }
-  }
-
   BotStateOpenText _stateA() {
     return BotStateOpenText(
       id: "A",
