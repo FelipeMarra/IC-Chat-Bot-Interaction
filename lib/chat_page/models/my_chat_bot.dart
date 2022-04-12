@@ -16,7 +16,6 @@ class MyChatBot {
       initialStateId: "A",
       states: [
         _stateA(),
-        _stateALoop(),
         _stateB(),
         _stateC(),
         _stateD(),
@@ -59,30 +58,14 @@ class MyChatBot {
         BotTransition(id: "A=>ALoop", to: "ALoop"),
         BotTransition(id: "A=>B", to: "B"),
       ],
-      decideTransition: _stateADecision,
-    );
-  }
-
-  BotStateOpenText _stateALoop() {
-    return BotStateOpenText(
-      id: "ALoop",
-      messages: () => [
-        const MarkdownBody(
-          data: "Eu realmente preciso saber seu nome...",
-        ),
-      ],
-      transitions: [
-        BotTransition(id: "ALoop=>ALoop", to: "ALoop"),
-        BotTransition(id: "ALoop=>B", to: "B"),
-      ],
-      decideTransition: (textController) {
-        if (textController.isEmpty) {
-          return "ALoop";
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Responda seu nome por favor";
         } else {
-          userName = textController;
-          return "B";
+          return null;
         }
       },
+      decideTransition: (contoller) => "B",
     );
   }
 
@@ -97,6 +80,13 @@ class MyChatBot {
       transitions: [
         BotTransition(id: "B=>C", to: "C"),
       ],
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Responda seu hobby por favor";
+        } else {
+          return null;
+        }
+      },
       decideTransition: (controller) => "C",
     );
   }
@@ -281,9 +271,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outros jogos"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -354,9 +341,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outras Redes Sociais"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -417,9 +401,6 @@ class MyChatBot {
         BotOption(
           message: const MarkdownBody(data: "Outros app de edição"),
         ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
-        ),
       ],
       transitions: [
         BotTransition(
@@ -476,9 +457,6 @@ class MyChatBot {
         ),
         BotOption(
           message: const MarkdownBody(data: "Outros app de produtividade"),
-        ),
-        BotOption(
-          message: const MarkdownBody(data: "Nenhuma das opções acima"),
         ),
       ],
       transitions: [
