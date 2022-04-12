@@ -47,9 +47,17 @@ class _AdminPageState extends State<AdminPage> {
               padding: const EdgeInsets.all(8.0),
               itemCount: chats.length,
               itemBuilder: (contex, index) {
-                String id = chats[index]["id"];
-                DateTime date = DateTime.fromMillisecondsSinceEpoch(
-                  int.parse(id),
+                String id = chats[index]["chat"]["id"];
+                String userEmail = chats[index]["userEmail"];
+                DateTime startTime = DateTime.fromMillisecondsSinceEpoch(
+                  chats[index]["startTime"],
+                );
+                DateTime endTime = DateTime.fromMillisecondsSinceEpoch(
+                  chats[index]["endTime"],
+                );
+                Duration diff = Duration(
+                  milliseconds: endTime.millisecondsSinceEpoch -
+                      startTime.millisecondsSinceEpoch,
                 );
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -73,9 +81,19 @@ class _AdminPageState extends State<AdminPage> {
                                   textAlign: TextAlign.start,
                                 ),
                                 Text(
-                                  "Criado em ${_formatDateNum(date.day)}/${_formatDateNum(date.month)} às ${_formatDateNum(date.hour)}:${_formatDateNum(date.minute)}",
+                                  "Email do Usuário: $userEmail",
                                   textAlign: TextAlign.start,
                                 ),
+                                Text(
+                                  "Criado em ${_formatDateNum(startTime.day)}/${_formatDateNum(startTime.month)} às ${_formatDateNum(startTime.hour)}:${_formatDateNum(startTime.minute)}",
+                                  textAlign: TextAlign.start,
+                                ),
+                                Text(
+                                  "Finalizado em ${_formatDateNum(endTime.day)}/${_formatDateNum(endTime.month)} às ${_formatDateNum(endTime.hour)}:${_formatDateNum(endTime.minute)}",
+                                  textAlign: TextAlign.start,
+                                ),
+                                Text(
+                                    "Duração: ${diff.inMinutes} minutos e ${diff.inSeconds - diff.inMinutes * 60} segundos")
                               ],
                             ))
                           ],
@@ -96,7 +114,7 @@ class _AdminPageState extends State<AdminPage> {
   }
 
   String _getUserName(int index) {
-    Map<String, dynamic> chatHistory = chats[index];
+    Map<String, dynamic> chatHistory = chats[index]["chat"];
     Map<String, dynamic>? last;
 
     chatHistory.forEach((key, value) {

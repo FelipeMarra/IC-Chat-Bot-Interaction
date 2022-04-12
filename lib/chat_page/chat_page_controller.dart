@@ -7,10 +7,14 @@ class ChatPageController extends ChangeNotifier {
   final fireRef = FirebaseDatabase.instance.ref();
   late ChatBot Function() getChatBot;
   String id = "";
+  DateTime? currentStartTime;
+  DateTime? currentEndTime;
+  String userEmail = "";
 
   Future<void> start(String newId) async {
     id = newId;
     _chatEnded = false;
+    currentStartTime = DateTime.now();
     await setChatById();
   }
 
@@ -19,8 +23,9 @@ class ChatPageController extends ChangeNotifier {
       getChatBot = () => MyChatBot().chatBot();
     } else {
       DataSnapshot snapshot = await fireRef.child(id).get();
-      getChatBot = () =>
-          ChatBot.fromMessageHistoryMap(snapshot.value as Map<String, dynamic>);
+      Map<String, dynamic> snapValue = snapshot.value as Map<String, dynamic>;
+      getChatBot = () => ChatBot.fromMessageHistoryMap(
+          snapValue["chat"]! as Map<String, dynamic>);
     }
   }
 
@@ -34,6 +39,9 @@ class ChatPageController extends ChangeNotifier {
         //save chat
         //TODO se n tiver o future ele n salva o ultimo estado
         await Future.delayed(const Duration(seconds: 2));
+        //get ent time
+        currentEndTime = DateTime.now();
+        //store chat
         if (chatBot.historyMode == false) {
           await _storeChat(chatBot);
         }
@@ -46,7 +54,12 @@ class ChatPageController extends ChangeNotifier {
 
   _storeChat(chatBot) async {
     final Map chatHistoryMap = await chatBot.getMessageHistoryMap();
-    await fireRef.child(chatHistoryMap["id"]).set(chatHistoryMap);
+    await fireRef.child(chatHistoryMap["id"]).set({
+      "startTime": currentStartTime!.millisecondsSinceEpoch,
+      "endTime": currentEndTime!.millisecondsSinceEpoch,
+      "userEmail": userEmail,
+      "chat": chatHistoryMap,
+    });
   }
 
   Future<List<Map<String, dynamic>>> getAllChats() async {

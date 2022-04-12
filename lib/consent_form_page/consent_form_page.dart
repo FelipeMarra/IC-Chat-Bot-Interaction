@@ -16,12 +16,14 @@ class ConsentFormPage extends StatefulWidget {
 
 class _ConsentFormPageState extends State<ConsentFormPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _textController = TextEditingController();
   bool agreed = true;
 
   @override
   Widget build(BuildContext context) {
     final ChatPageController chatPageController =
         context.read<ChatPageController>();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -48,6 +50,7 @@ class _ConsentFormPageState extends State<ConsentFormPage> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState?.validate() == true && agreed) {
+                    chatPageController.userEmail = _textController.value.text;
                     await chatPageController.start("");
                     Navigator.of(context).popAndPushNamed(ChatPage.routeName);
                   }
@@ -66,14 +69,9 @@ class _ConsentFormPageState extends State<ConsentFormPage> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: const [
         Text(
-          "Propensão à Interação com Humanos Digitais",
+          "Termo de Consentimento Livre e Esclarecido",
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        Text(
-          """
-
-Termo de Consentimento Livre e Esclarecido""",
         ),
         Text("""
 
@@ -252,6 +250,7 @@ Telefone: +55  37 99947-6397
             Padding(
               padding: const EdgeInsets.only(right: 200.0),
               child: TextFormField(
+                controller: _textController,
                 decoration: const InputDecoration(
                   label: Text("Seu e-mail"),
                 ),
