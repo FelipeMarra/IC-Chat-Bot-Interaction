@@ -198,7 +198,7 @@ Universidade Federal de São João del-Rei
 E-mail:""",
               ),
               TextSpan(
-                text: """  fonseccamariane@outlook.com""",
+                text: """ fonseccamariane@outlook.com""",
                 style: TextStyle(color: Colors.blue),
               ),
               TextSpan(
@@ -215,12 +215,12 @@ Telefone: +55 32 99832-7729
             children: [
               TextSpan(
                 text: """Felipe Ferreira Marra
-Graduando de Ciências da Computação
+Bolsista de Iniciação Científica - Graduando de Ciências da Computação
 Universidade Federal de São João del-Rei
 E-mail:""",
               ),
               TextSpan(
-                text: """   felipeferreiramarra@gmail.com""",
+                text: """ felipeferreiramarra@gmail.com""",
                 style: TextStyle(color: Colors.blue),
               ),
               TextSpan(
