@@ -75,26 +75,25 @@ class _ConsentFormPageState extends State<ConsentFormPage> {
         ),
         Text("""
 
-Prezado(a) participante,
-        
-Você está sendo convidado(a) a participar da pesquisa “Transformação Digital e a Propensão do Consumidor à Interação com Humanos Digitais”, desenvolvida pelos professores Paula Karina Salume, Marcelo de Rezende Pinto, Dárlinton Barbosa Feres Carvalho, com a colaboração da bolsista de iniciação científica Mariane Auxiliadora Fonseca e do discente Felipe Ferreira Marra. O objetivo central do estudo é analisar as atitudes do consumidor para a propensão de interagir com humanos digitais, a fim de fornecer informações variadas para as empresas e um avanço para os estudos dessa temática.
-        
+Prezado(a) participante, 
+
+Você está sendo convidado(a) a participar da pesquisa “Transformação Digital e a Propensão do Consumidor à Interação com Humanos Digitais”, desenvolvida pelos professores Paula Karina Salume, Marcelo de Rezende Pinto, Dárlinton Barbosa Feres Carvalho, com a colaboração dos bolsistas de iniciação científica Mariane Auxiliadora Fonseca e  Felipe Ferreira Marra. O objetivo central do estudo é analisar as atitudes do consumidor para a propensão de interagir com humanos digitais, a fim de fornecer informações variadas para as empresas e um avanço para os estudos dessa temática.
 O convite a sua participação se deve ao interesse em encontrar resultados aplicáveis à indústria em geral, portanto estende-se o convite à população-alvo aberta de indivíduos de todo o Brasil, maiores de 18 anos. A sua participação é voluntária, isto é, ela não é obrigatória, possuindo plena autonomia para decidir se quer ou não participar, bem como retirar sua participação a qualquer momento. Não haverá penalização de nenhuma maneira caso decida não consentir sua participação, ou desistir da mesma. Contudo, ela é muito importante para a execução da pesquisa.
-        
+
 Serão garantidas a confidencialidade e a privacidade das informações prestadas, sendo toda a avaliação realizada de forma individual. Na presente pesquisa, você não será identificado pelo seu nome. Qualquer dado que possa identificá-lo será omitido na divulgação dos resultados da pesquisa, e o material será armazenado em local seguro. A qualquer momento, durante a pesquisa, ou posteriormente, você poderá solicitar do pesquisador informações sobre sua participação e/ou sobre a pesquisa, o que poderá ser feito através dos meios de contato explicitados neste documento.
-        
+
 A sua participação consistirá em interagir com um humano digital (chatbot) e, posteriormente, responder a algumas questões relacionadas à experiência vivenciada associada aos construtos abordados, atribuindo notas em uma escala de 1 a 7. A interação com o humano digital levará um tempo estimado de 3 minutos. O questionário a ser preenchido em seguida poderá levar, aproximadamente, 5 minutos. A qualquer momento será possível solicitar a interrupção da atividade. 
-        
+
 As respostas das questões serão armazenadas em arquivos digitais, assim como os resultados, mas somente terão acesso às mesmas os professores pesquisadores e os discentes colaboradores. Ao final da pesquisa, todo material será mantido em arquivo, por pelo menos 5 anos, conforme Resolução 466/12 e orientações do CEPSJ.
-        
+
 Como benefício da pesquisa teremos conhecimento sobre propensões dos consumidores em interagir com humanos digitais e assim alcançar descobertas vitais para o desenvolvimento e apoio aos negócios, além de uma possível orientação benéfica para o consumidor e um avanço acadêmico na busca do entendimento sobre o fenômeno dos humanos digitais no contexto brasileiro.
-        
+
 Os resultados gerais poderão ser divulgados em palestras dirigidas ao público participante, artigos científicos e eventos acadêmicos. Os resultados de forma individual só poderão ser repassados ao próprio participante, estando a equipe de pesquisadores à disposição para eventuais esclarecimentos.
-        
-Não haverá nenhum custo pela sua participação neste estudo. Este é um estudo financiado pelo Programa institucional de Bolsas de Iniciação Científica (PIBIC) da Universidade Federal de São João del Rei (UFSJ). 
-        
+
+Não haverá nenhum custo pela sua participação neste estudo. Este é um estudo financiado pela Universidade Federal de São João del Rei (UFSJ). 
+
 Por favor, sinta-se à vontade para fazer qualquer pergunta sobre este estudo. Se outras perguntas surgirem posteriormente, você poderá entrar em contato com os pesquisadores por meio dos contatos disponibilizados.
-        
+
 Em caso de dúvida quanto à condução ética do estudo, entre em contato com o Comitê de Ética em Pesquisa da CEPSJ. O Comitê de Ética é a instância que tem por objetivo defender os interesses dos participantes da pesquisa em sua integridade e dignidade e para contribuir no desenvolvimento da pesquisa dentro de padrões éticos. Dessa forma, o comitê tem o papel de avaliar e monitorar o andamento do projeto de modo que a pesquisa respeite os princípios éticos de proteção aos direitos humanos, da dignidade, da autonomia, da não maleficência, da confidencialidade e da privacidade.
         """),
         Text.rich(
@@ -171,7 +170,7 @@ Telefone: +5531 99967-0518
             children: [
               TextSpan(
                 text: """Dr. Dárlinton Barbosa Feres Carvalho
-Professor do Departamento de Computação (DECOMP)
+Professor do Departamento de Ciência da Computação (DECOMP)
 Universidade Federal de São João del-Rei
 E-mail:""",
               ),
@@ -192,7 +191,7 @@ Telefone: +55 32 99199-2566
           TextSpan(
             children: [
               TextSpan(
-                text: """Mariane Auxiliadora Fonseca
+                text: """Mariane Auxiliadora Fonseca  
 Bolsista de Iniciação Científica - Graduanda de Administração
 Universidade Federal de São João del-Rei
 E-mail:""",
@@ -215,7 +214,7 @@ Telefone: +55 32 99832-7729
             children: [
               TextSpan(
                 text: """Felipe Ferreira Marra
-Bolsista de Iniciação Científica - Graduando de Ciências da Computação
+Bolsista de Iniciação Científica - Graduando de Ciência da Computação
 Universidade Federal de São João del-Rei
 E-mail:""",
               ),
