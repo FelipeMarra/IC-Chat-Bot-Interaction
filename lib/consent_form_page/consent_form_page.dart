@@ -245,7 +245,7 @@ Telefone: +55  37 99947-6397
             const SizedBox(
               height: 8.0,
             ),
-            const Text("E-mai *"),
+            const Text("E-mail *"),
             Padding(
               padding: const EdgeInsets.only(right: 200.0),
               child: TextFormField(
